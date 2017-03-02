@@ -39,12 +39,12 @@ func main() {
 
 	switch *outmode {
 	case 2:
-		f, _ := os.OpenFile("out_img.png", os.O_WRONLY|os.O_CREATE, 0600)
+		f, _ := os.OpenFile("out.png", os.O_WRONLY|os.O_CREATE, 0600)
 		defer f.Close()
 		png.Encode(f, l.Image())
 	case 1:
 		fmt.Print(l)
 	default:
-		fmt.Println("Unknown out_img format")
+		fmt.Println("Unknown out format")
 	}
 }
