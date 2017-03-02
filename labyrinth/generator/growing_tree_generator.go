@@ -16,12 +16,22 @@ func (GrowingTreeGenerator) Generate(w, h int) [][]bool {
 		data[i] = make([]bool, w)
 	}
 
+	cx := w / 2
+	cy := h / 2
+
+	if cx%2 == 0 {
+		cx += 1
+	}
+
+	if cy%2 == 0 {
+		cy += 1
+	}
+
 	var remaining []coords
-	remaining = append(remaining, coords{w / 2, h / 2})
+	remaining = append(remaining, coords{cx, cy})
 
 	for len(remaining) > 0 {
 		n := rand.Intn(len(remaining))
-
 		c := remaining[n]
 
 		dests := getPossibleDestinations(c, w, h, data)
