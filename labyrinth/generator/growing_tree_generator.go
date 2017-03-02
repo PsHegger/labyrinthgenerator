@@ -38,6 +38,18 @@ func (GrowingTreeGenerator) Generate(w, h int) [][]bool {
 		}
 	}
 
+	entrance := rand.Intn(w-2) + 1
+	for !data[1][entrance] {
+		entrance = rand.Intn(w-2) + 1
+	}
+	data[0][entrance] = true
+
+	exit := rand.Intn(w-2) + 1
+	for !data[h-2][exit] {
+		exit = rand.Intn(w-2) + 1
+	}
+	data[h-1][exit] = true
+
 	return data
 }
 
