@@ -1,12 +1,12 @@
 package main
 
 import (
+	"flag"
 	"fmt"
+	"image/png"
 	"labyrinth_generator/labyrinth"
 	"labyrinth_generator/labyrinth/generator"
-	"flag"
 	"os"
-	"image/png"
 )
 
 func main() {
@@ -25,6 +25,14 @@ func main() {
 		gen = generator.EllerGenerator{}
 	default:
 		gen = generator.RecursiveGenerator{}
+	}
+
+	if *width%2 == 0 {
+		*width += 1
+	}
+
+	if *height%2 == 0 {
+		*height += 1
 	}
 
 	l := labyrinth.NewLabyrinth(*width, *height, gen)
